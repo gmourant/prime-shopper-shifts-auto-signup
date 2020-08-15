@@ -18,8 +18,11 @@ browser.get('https://na.amazonmoment.com/goa/wfm/associate/adjustments')
 browser.implicitly_wait(10)
 
 # finding shifts
-div = browser.find_element_by_class_name('card-block')
-sign_up_table = div.find_element_by_class_name('table-striped')
+tables = browser.find_elements_by_css_selector('table.table-striped')
+print(len(tables))
+for table in tables:
+    print(table.text)
+sign_up_table = tables[1]
 
 rows = sign_up_table.find_elements_by_tag_name('tr')
 for row in rows:
